@@ -1,11 +1,11 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from "react";
 
 class Rating extends Component {
   constructor(props) {
     super(props);
     this.state = {
       rating: props.defaultValue,
-      tmpRating: props.defaultValue,
+      tmpRating: props.defaultValue
     };
   }
 
@@ -20,7 +20,7 @@ class Rating extends Component {
   setRating(rating) {
     this.setState({
       tmpRating: rating,
-      rating: rating,
+      rating: rating
     });
   }
 
@@ -38,19 +38,21 @@ class Rating extends Component {
     for (var i = 1; i < this.props.max; i++) {
       stars.push(
         <span
-          className={i <= this.state.tmpRating ? 'RatingOn' : null}
+          className={i <= this.state.tmpRating ? "RatingOn" : null}
           key={i}
           onClick={!this.props.readOnly && this.setRating.bind(this, i)}
           onMouseOver={!this.props.readonly && this.setTemp.bind(this, i)}
-        >&#9734;</span>
+        >
+          &#9734;
+        </span>
       );
     }
 
     return (
       <div
         className={classNames({
-          'Rating': true,
-          'RatingReadOnly': this.props.readonly,
+          Rating: true,
+          RatingReadOnly: this.props.readonly
         })}
         onMouseOut={this.reset.bind(this)}
       >
@@ -58,10 +60,10 @@ class Rating extends Component {
         {this.props.readonly || !this.props.id
           ? null
           : <input
-            type="hidden"
-            id={this.props.id}
-            value={this.state.rating} />
-        }
+              type="hidden"
+              id={this.props.id}
+              value={this.state.rating}
+            />}
       </div>
     );
   }
@@ -70,12 +72,12 @@ class Rating extends Component {
 Rating.propTypes = {
   defaultValue: PropTypes.number,
   readonly: PropTypes.bool,
-  max: PropTypes.number,
+  max: PropTypes.number
 };
 
 Rating.defaultProps = {
   defaultValue: 0,
-  max: 5,
+  max: 5
 };
 
 export default Rating;

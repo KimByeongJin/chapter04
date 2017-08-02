@@ -1,10 +1,10 @@
-import React, { Component, PropType } from 'react';
-import Rating from './Rating';
-import Suggest from './Suggest';
+import React, { Component, PropType } from "react";
+import Rating from "./Rating";
+import Suggest from "./Suggest";
 
 class FormInput extends Component {
   getValue() {
-    return 'value' in this.refs.input
+    return "value" in this.refs.input
       ? this.refs.input.value
       : this.refs.input.getValue();
   }
@@ -12,50 +12,47 @@ class FormInput extends Component {
   render() {
     const common = {
       id: this.props.id,
-      ref: 'input',
-      defaultValue: this.props.defaultValue,
+      ref: "input",
+      defaultValue: this.props.defaultValue
     };
 
     switch (this.props.type) {
-      case 'year':
+      case "year":
         return (
           <input
             {...common}
             type="number"
-            defaultValue={this.props.defaultValue
-              || new Date().getFullYear()} />
+            defaultValue={this.props.defaultValue || new Date().getFullYear()}
+          />
         );
 
-      case 'suggest':
+      case "suggest":
         return <Suggest {...common} options={this.props.options} />;
 
-      case 'rating':
+      case "rating":
         return (
           <Rating
             {...common}
-            defaultValue={parseInt(this.props.defaultValue, 10)} />
+            defaultValue={parseInt(this.props.defaultValue, 10)}
+          />
         );
 
-      case 'text':
+      case "text":
         return <textarea {...common} />;
 
       default:
         return <input {...common} type="text" />;
     }
 
-    return (
-      <div>
-
-      </div>
-    );
+    return <div />;
   }
 }
 
 FormInput.propTypes = {
-  type: PropTypes.oneOf(['year', 'suggest', 'rating', 'text', 'input']),
+  type: PropTypes.oneOf(["year", "suggest", "rating", "text", "input"]),
   id: PropTypes.string,
   options: PropTypes.array,
-  defaultValue: PropTypes.any,
+  defaultValue: PropTypes.any
 };
 
 export default FormInput;

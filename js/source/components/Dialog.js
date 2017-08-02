@@ -1,34 +1,41 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from "react";
 
 class Dialog extends Component {
   componentWillUnmount() {
-    document.body.classList.remove('DialogModalOpen');
+    document.body.classList.remove("DialogModalOpen");
   }
 
   componentDidMount() {
     if (this.props.modal) {
-      document.body.classList.add('DialogModalOpen');
+      document.body.classList.add("DialogModalOpen");
     }
   }
 
   render() {
     return (
-      <div className={this.props.modal ? 'Dialog DialogModal' : 'Dialog'}>
-        <div className={this.props.modal ? 'DialogModalWrap' : null}>
-          <div className="DialogHeader">{this.props.header}</div>
-          <div className="DialogBody">{this.props.children}</div>
+      <div className={this.props.modal ? "Dialog DialogModal" : "Dialog"}>
+        <div className={this.props.modal ? "DialogModalWrap" : null}>
+          <div className="DialogHeader">
+            {this.props.header}
+          </div>
+          <div className="DialogBody">
+            {this.props.children}
+          </div>
           <div className="DialogFooter">
             {this.props.hasCancel
               ? <span
-                className="DialogDismiss"
-                onClick={this.props.onAction.bind(this, 'dismiss')}>
-                Cancel
+                  className="DialogDismiss"
+                  onClick={this.props.onAction.bind(this, "dismiss")}
+                >
+                  Cancel
                 </span>
-              : null
-            }
-            <Button onClick={this.props.onAction.bind(this,
-              his.props.hasCancel ? 'confirm' : 'dismiss'
-            )}>
+              : null}
+            <Button
+              onClick={this.props.onAction.bind(
+                this,
+                his.props.hasCancel ? "confirm" : "dismiss"
+              )}
+            >
               {this.props.confirmLabel}
             </Button>
           </div>
@@ -43,13 +50,13 @@ Dialog.propTypes = {
   confirmLabel: PropTypes.string,
   modal: PropTypes.bool,
   onAction: PropTypes.func,
-  hasCancel: PropTypes.bool,
+  hasCancel: PropTypes.bool
 };
 
 Dialog.defaultProps = {
-  confirmLabel: 'ok',
+  confirmLabel: "ok",
   modal: false,
-  onAction: () => { },
+  onAction: () => {},
   hasCancel: true
 };
 

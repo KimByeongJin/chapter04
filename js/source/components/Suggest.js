@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from "react";
 
 class Suggest extends Component {
   constructor(props) {
@@ -19,19 +19,20 @@ class Suggest extends Component {
           list={randomid}
           defaultValue={this.props.defaultValue}
           onChange={e => this.setState({ value: e.target.value })}
-          id={this.props.id} />
-        <datalist id={randomid}>{
-          this.props.options.map((item, idx) =>
+          id={this.props.id}
+        />
+        <datalist id={randomid}>
+          {this.props.options.map((item, idx) =>
             <option value={item} key={idx} />
-          )
-        }</datalist>
+          )}
+        </datalist>
       </div>
     );
   }
 }
 
 Suggest.propTypes = {
-  options: PropTypes.arrayOf(PropTypes.string),
+  options: PropTypes.arrayOf(PropTypes.string)
 };
 
 export default Suggest;
